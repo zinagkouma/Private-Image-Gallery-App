@@ -1,0 +1,40 @@
+.auth-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 24px;
+  text-align: center;
+  font-family: sans-serif;  
+}
+
+.auth-prompt {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;  
+}
+
+
+/*Authentication Form*/
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;  
+}
+
+.auth-input {
+  font-size: 15px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;  
+}
+
+.submit-btn {
+  background-color: #2563eb;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;  
+}
+
+
