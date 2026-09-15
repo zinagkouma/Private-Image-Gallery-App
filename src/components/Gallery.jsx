@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, use } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from '../supabaseClient'; 
 
 import "./Gallery.css"; 
@@ -24,7 +24,7 @@ export default function Gallery ({session, profile}) {
         data.map(async (item) => {
           const {data: urlData} = await supabase.storage
                .from("event-photos")
-               .createSignedUrl(item.storage_path, 3600); 
+               .createSignedUrl(item.storage_path, 86400); 
 
           return {
             ...item, 
@@ -129,22 +129,22 @@ export default function Gallery ({session, profile}) {
       <header className="gallery-header">
         
         <div>
-          <h1 className="gallery-title">Preveza photos</h1>
-          <p className="gallery-user-username">Logged in as <strong>{profile?.username}</strong></p>
+          <h1 className="gallery-title">Πρέβεζα Φωτογραφίες</h1>
+          <p className="gallery-user-username">Σύνδεση ως <strong>{profile?.username}</strong></p>
         </div>
 
         <button
          className="signout-btn"
          onClick={() => supabase.auth.signOut()}
         >
-          Sign Out
+          Αποσύνδεση
         </button>
       </header>
 
       {/*Upload Button*/}
       <section className="upload-card">
         <label className={`upload-label ${uploading ? 'disabled' : ''}`}>
-          <span>{uploading ? "Uploading..." : "+ Choose photos to upload"}</span>
+          <span>{uploading ? "Ανέβασμα..." : "+ Επέλεξε φωτογραφίες"}</span>
           <span className="upload-subtext">.jpg .png .webp</span>
 
           <input
@@ -170,7 +170,7 @@ export default function Gallery ({session, profile}) {
            />
 
            <div className="photo-overlay">
-             <span className="photo-uploader">Uploaded by <strong>{photo.uploader}</strong></span>
+             <span className="photo-uploader">Ανεβασμένο από <strong>{photo.uploader}</strong></span>
            </div>
           </div>
         ))}

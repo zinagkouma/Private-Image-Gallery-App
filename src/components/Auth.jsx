@@ -16,7 +16,8 @@ export default function Auth() {
     const {error} = await supabase.auth.signInWithOtp({
       email: email.trim().toLowerCase(),
       options: {
-        emailRedirectTo: window.location.origin
+        emailRedirectTo: window.location.origin,
+        shouldCreateUser: false
       }    
     });
 

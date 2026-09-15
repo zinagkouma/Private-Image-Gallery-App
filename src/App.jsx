@@ -17,7 +17,7 @@ export default function App() {
   const loadUserProfile = async (userId) => {
     const {data} = await supabase
          .from("profiles")
-         .select('*')
+         .select("username")
          .eq("id", userId)
          .maybeSingle();
 
@@ -26,24 +26,12 @@ export default function App() {
   };
 
   useEffect(() => {
-    //Initial session check
-    supabase.auth.getSession().then(({data: {session}}) => {
-      setSession(session); 
-
-      if (session) {
-        loadUserProfile(session.user.id);
-
-      } else {
-        setLoading(false); 
-      }
-    });
-
-    //Auth state listener that is triggered upon email link click
-    const {data: {subscription}} = supabase.auth.onAuthStateChange((_event, session) => {
+    //Auth state listener fires automatically on mount and evaluates the session
+    const {data: {subscription}} = supabase.auth.onAuthStateChange(async(_event, session) => {
       setSession(session);
 
       if (session) {
-        loadUserProfile(session.user.id);
+        await loadUserProfile(session.user.id);
 
       } else {
         setProfile(null);
@@ -54,6 +42,7 @@ export default function App() {
     return () => subscription.unsubscribe(); 
   }, []); 
 
+
   if (loading) {
     return (
       <div className="loading-screen">
@@ -63,19 +52,18 @@ export default function App() {
     );
   }
   
-
   //Render according to case: 
-  //1. Not signed in 
-  if (!session) {
-    return <Auth/>;
+  //1. First visit (no username yet)
+  if (session && !profile) {
+    return <SetUsername session={session} onProfileCreated={(newProf) => setProfile(newProf)}/>
   }
 
-  //2. First visit (no username yet)
-  if (!profile) {
-    return <SetUsername session={session} onProfileCreated={(newProf) => setProfile(newProf)}/>;
+  //2. Signed in and username exists
+  if (session && profile) {
+    return <Gallery session={session} profile={profile}/>;
   }
 
-  //3. Signed in and username exists
-  return <Gallery session={session} profile={profile}/>; 
+  //3. If session is expired, show email form
+  return <Auth/>; 
   
 }
