@@ -47,7 +47,7 @@ export default function App() {
     return (
       <div className="loading-screen">
         <div className="spinner"></div>
-        <p>Loading gallery...</p>
+        <p>Περίμενε...</p>
       </div>
     );
   }

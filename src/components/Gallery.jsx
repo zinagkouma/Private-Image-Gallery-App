@@ -205,7 +205,7 @@ export default function Gallery ({session, profile}) {
             <div className="lightbox-details">
               <span className="lightbox-counter">{lightboxIndex + 1} / {photos.length}</span>
               <span className="lightbox-caption">{photos[lightboxIndex].caption}</span>
-              <span className="lightbox-uploader">Uploaded by {photos[lightboxIndex].uploader}</span>
+              <span className="lightbox-uploader">Ανεβασμένο από {photos[lightboxIndex].uploader}</span>
             </div>
 
           </div>
@@ -214,11 +214,11 @@ export default function Gallery ({session, profile}) {
 
       {photos.length === 0 && !loadingPhotos && (
         <p className="empty-gallery">
-          No photos yet. Upload your first memory! 
+          Δεν υπάρχουν φωτογραφίες ακόμα 
         </p>
       )}
 
-      {loadingPhotos && <p className="loading-text">Loading photos...</p>}
+      {loadingPhotos && <p className="loading-text">Φόρτωση φωτογραφιών...</p>}
     </div>
   );  
 }

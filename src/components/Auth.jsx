@@ -33,9 +33,9 @@ export default function Auth() {
 
   return(
     <main className="auth-container">
-      <h2>Preveza 2026 Highlights</h2>   
+      <h2>Ιστορικές φωτογραφίες Πρέβεζα</h2>   
       <p className="auth-prompt">
-        Enter your email to receive your access link.
+        Εισήγαγε το email σου για να σου στείλουμε σύνδεσμο.
       </p>
 
       <form className="auth-form" onSubmit={handleSendLink}>
@@ -54,7 +54,7 @@ export default function Auth() {
          disabled={loading}
          style={{cursor: loading ? "not-allowed" : "pointer"}}
         >
-         {loading ? "Sending Link" : "Send Link"}
+         {loading ? "Περίμενε..." : "Αποστολή"}
         </button>
       </form>
 
