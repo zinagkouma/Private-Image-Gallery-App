@@ -49,6 +49,8 @@ export default function SetUsername({session, onProfileCreated}) {
 
   return(
     <main className="setUsername-container">
+      <h1>Ιστορικές φωτογραφίες Πρέβεζας</h1>
+
       <h2>Καλώς όρισες!</h2>
       <p className="setUsername-message">
         Εισήγαγε το όνομά σου και το συνθηματικό για να συνδεθείς.
@@ -59,7 +61,7 @@ export default function SetUsername({session, onProfileCreated}) {
          className="setUsername-input"
          type="text" 
          value={username}
-         placeholder="Your Name"
+         placeholder="Όνομα"
          maxLength={20}
          onChange={(e) => setUsername(e.target.value)}
          required
