@@ -5,7 +5,7 @@ import "./SetUsername.css";
 
 
 const isValidPasscode = (code) => {
-  const match = code.trim().match(/^SAT-([1-9]|1[0-2])$/);
+  const match = code.trim().match(/^SAM-([1-9]|10)$/);
   return Boolean(match); 
 };
 
