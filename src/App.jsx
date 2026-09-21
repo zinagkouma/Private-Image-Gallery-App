@@ -34,8 +34,13 @@ export default function App() {
         await loadUserProfile(session.user.id);
 
       } else {
-        setProfile(null);
-        setLoading(false); 
+        //If there's no session, automatically create an anonymous session
+        const {error} = await supabase.auth.signInAnonymously(); 
+
+        if (error) {
+          console.error("Could not sign in anonymously:", error.message); 
+          setLoading(false); 
+        }
       }
     });
 
@@ -53,7 +58,7 @@ export default function App() {
   }
   
   //Render according to case: 
-  //1. First visit (no username yet)
+  //1. First visit (no username and passcode yet)
   if (session && !profile) {
     return <SetUsername session={session} onProfileCreated={(newProf) => setProfile(newProf)}/>
   }
@@ -63,7 +68,5 @@ export default function App() {
     return <Gallery session={session} profile={profile}/>;
   }
 
-  //3. If session is expired, show email form
-  return <Auth/>; 
-  
+  return null; 
 }
