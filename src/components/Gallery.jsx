@@ -133,12 +133,6 @@ export default function Gallery ({session, profile}) {
           <p className="gallery-user-username">Σύνδεση ως <strong>{profile?.username}</strong></p>
         </div>
 
-        <button
-         className="signout-btn"
-         onClick={() => supabase.auth.signOut()}
-        >
-          Αποσύνδεση
-        </button>
       </header>
 
       {/*Upload Button*/}
