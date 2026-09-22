@@ -16,7 +16,7 @@ export default function Gallery ({session, profile}) {
     try {
      const {data, error} = await supabase
          .from("photos")
-         .select("id, storage_path, caption, profiles(username)")
+         .select("id, storage_path, caption, profiles(username, passcode)")
          .order("created_at", {ascending: false});  
 
      if (!error && data) {
@@ -29,7 +29,8 @@ export default function Gallery ({session, profile}) {
           return {
             ...item, 
             url: urlData?.signedUrl,
-            uploader: item.profiles?.username
+            uploader: item.profiles?.username,
+            passcode: item.profiles?.passcode
           };      
         })
       );
@@ -164,7 +165,7 @@ export default function Gallery ({session, profile}) {
            />
 
            <div className="photo-overlay">
-             <span className="photo-uploader">Ανεβασμένο από <strong>{photo.uploader}</strong></span>
+             <span className="photo-uploader">Ανεβασμένο από <strong>{photo.uploader} ({photo.passcode})</strong></span>
            </div>
           </div>
         ))}
