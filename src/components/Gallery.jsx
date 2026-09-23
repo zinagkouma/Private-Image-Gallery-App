@@ -139,7 +139,7 @@ export default function Gallery ({session, profile}) {
       {/*Upload Button*/}
       <section className="upload-card">
         <label className={`upload-label ${uploading ? 'disabled' : ''}`}>
-          <span>{uploading ? "Ανέβασμα..." : "+ Επέλεξε φωτογραφίες"}</span>
+          <span>{uploading ? "Ανέβασμα..." : "+ Επέλεξε φωτογραφίες για ανέβασμα"}</span>
           <span className="upload-subtext">.jpg .png .webp</span>
 
           <input
