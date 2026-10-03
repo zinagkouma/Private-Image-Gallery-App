@@ -130,7 +130,7 @@ export default function Gallery ({session, profile}) {
       <header className="gallery-header">
         
         <div>
-          <h1 className="gallery-title">Πρέβεζα Φωτογραφίες</h1>
+          <h1 className="gallery-title">Φωτογραφίες των SAM</h1>
           <p className="gallery-user-username">Σύνδεση ως <strong>{profile?.username}</strong></p>
         </div>
 
@@ -139,7 +139,7 @@ export default function Gallery ({session, profile}) {
       {/*Upload Button*/}
       <section className="upload-card">
         <label className={`upload-label ${uploading ? 'disabled' : ''}`}>
-          <span>{uploading ? "Ανέβασμα..." : "+ Επέλεξε φωτογραφίες για ανέβασμα"}</span>
+          <span>{uploading ? "Ανέβασμα..." : "+ Ανέβασε τις φωτογραφίες σου"}</span>
           <span className="upload-subtext">.jpg .png .webp</span>
 
           <input

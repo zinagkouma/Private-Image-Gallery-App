@@ -49,7 +49,7 @@ export default function SetUsername({session, onProfileCreated}) {
 
   return(
     <main className="setUsername-container">
-      <h1>Ιστορικές φωτογραφίες Πρέβεζας</h1>
+      <h1>Ιστορικές φωτογραφίες των SAM</h1>
 
       <h2>Καλώς όρισες!</h2>
       <p className="setUsername-message">
