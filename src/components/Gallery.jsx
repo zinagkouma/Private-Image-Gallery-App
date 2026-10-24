@@ -84,6 +84,21 @@ export default function Gallery ({session, profile}) {
      setUploading(true);
      const files = Array.from(e.target.files || []);  
      if (files.length === 0) return;  
+
+     //Filter to allow only JPG files
+     const filteredFiles = files.filter((file) => {
+      const ext = file.name.split('.').pop().toLowerCase(); 
+      return file.type === "image/jpeg" || ext === "jpg" || ext === "jpeg";
+     }); 
+
+     if (filteredFiles.length === 0) {
+      alert("Επιτρέπονται μόνο αρχεία .jpg / .jpeg.");
+      return;
+     }
+
+     if (files.length < rawFiles.length) {
+      alert("Μερικά αρχεία παραλείφθηκαν επειδή δεν ήταν .jpg / .jpeg.");
+     }
      
      //Upload all files and insert DB records in parallel
      await Promise.all(
@@ -91,7 +106,7 @@ export default function Gallery ({session, profile}) {
         const fileExt = file.name.split('.').pop(); 
 
         //Append index and random suffix to avoid file name collision in batch
-        const filePath = `${session.user.id}/${Date.now()}.${fileExt}`; 
+        const filePath = `${session.user.id}/${Date.now()}-${index}.${fileExt}`; 
 
         //Upload to private bucket
         const {error: storageError} = await supabase.storage
@@ -140,11 +155,11 @@ export default function Gallery ({session, profile}) {
       <section className="upload-card">
         <label className={`upload-label ${uploading ? 'disabled' : ''}`}>
           <span>{uploading ? "Ανέβασμα..." : "+ Ανέβασε τις φωτογραφίες σου"}</span>
-          <span className="upload-subtext">.jpg .png .webp</span>
+          <span className="upload-subtext">Μόνο αρχεία .jpg</span>
 
           <input
            type="file"
-           accept="image/*"
+           accept="image/jpeg, .jpg, .jpeg"
            multiple
            onChange={handleUpload}
            disabled={uploading}
