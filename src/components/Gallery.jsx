@@ -143,12 +143,10 @@ export default function Gallery ({session, profile}) {
   return(
     <div className="gallery-container">
       <header className="gallery-header">
-        
         <div>
           <h1 className="gallery-title">Φωτογραφίες των SAM</h1>
           <p className="gallery-user-username">Σύνδεση ως <strong>{profile?.username}</strong></p>
         </div>
-
       </header>
 
       {/*Upload Button*/}

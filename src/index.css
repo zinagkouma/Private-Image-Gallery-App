@@ -1,0 +1,7 @@
+body {
+  background-image: url("assets/ΠΥΛΗ.jpg"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(224, 224, 224, 0.15);
+  background-blend-mode: lighten;
+}

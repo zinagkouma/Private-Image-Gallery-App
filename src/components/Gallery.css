@@ -12,11 +12,12 @@
 .gallery-header {
   display: flex;
   justify-content: space-between;
+  margin-left: -75px;
   align-items: center;
   padding-bottom: 24px;
-  border-bottom: 1px solid #e2e8f0;
   gap: 16px;  
 }
+
 
 .gallery-title {
   margin: 0;
@@ -29,7 +30,7 @@
 .gallery-user-username {
   margin: 6px 0 0;
   font-size: 0.9rem;
-  color: #64748b;  
+  color: #0f172a;  
 }
 
 .gallery-user-username strong {
@@ -58,7 +59,7 @@
 
 /*Upload Card*/
 .upload-card {
-  margin: 28px 0;
+  margin: 50px 0;
   padding: 40px 24px;
   background-color: #ffffff;
   border: 2px dashed #cbd5e1;
@@ -157,7 +158,7 @@
 .empty-gallery {
   text-align: center;
   padding: 80px 20px;
-  color: #94a3b8;  
+  color: #0f172a;  
 }
 
 .empty-gallery p {
